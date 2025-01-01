@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>almhdy24</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Welcome to almhdy24's personal website. Explore my projects, learn about my skills, and get in touch.">
+  <meta name="keywords" content="almhdy24, web developer, PHP, projects, portfolio">
+  <meta name="author" content="almhdy24">
   <!-- Include Tailwind CSS via CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- Include React and ReactDOM via CDN -->
@@ -54,8 +58,8 @@
             throw new Error('Network response was not ok');
           }
           const data = await response.json();
-          setProjects(data);
-          // GitHub API doesn't provide total_count for /users/:username/repos endpoint
+          const filteredData = data.filter(repo => repo.name !== 'almhdy24' && repo.name !== 'almhdy24.github.io');
+          setProjects(filteredData);
           // Assuming 50 total repos for pagination example
           setTotalPages(Math.ceil(50 / 5));
         } catch (error) {
