@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>almhdy24's Personal Website</title>
+  <title>almhdy24</title>
   <!-- Include Tailwind CSS via CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- Include React and ReactDOM via CDN -->
@@ -69,6 +69,7 @@
         const response = await fetch(`${lang}.json`);
         const data = await response.json();
         setTranslations(data);
+        document.title = data.personal_website || "almhdy24";
       };
 
       const handleLanguageChange = (event) => {
@@ -83,7 +84,7 @@
 
       return React.createElement('div', { className: language === 'ar' ? 'font-arabic' : '', dir: language === 'ar' ? 'rtl' : 'ltr' },
         React.createElement('header', { className: 'bg-blue-600 text-white p-6 flex items-center justify-between' },
-          React.createElement('h1', { className: 'text-3xl font-bold' }, translations.personal_website || "almhdy24's Personal Website"),
+          React.createElement('h1', { className: 'text-3xl font-bold' }, "almhdy24"),
           React.createElement('nav', null,
             React.createElement('a', { href: '#about', className: 'text-white ml-4 hover:underline' }, translations.about_me || 'About'),
             React.createElement('a', { href: '#projects', className: 'text-white ml-4 hover:underline' }, translations.projects || 'Projects'),
@@ -141,6 +142,11 @@
               React.createElement('option', { value: 'en' }, 'English'),
               React.createElement('option', { value: 'ar' }, 'Arabic')
             )
+          ),
+          React.createElement('div', { className: 'flex justify-center mt-4' },
+            React.createElement('a', { href: 'https://github.com/almhdy24', className: 'text-white mx-2 hover:underline' }, 'GitHub'),
+            React.createElement('a', { href: 'https://linkedin.com/in/almhdy24', className: 'text-white mx-2 hover:underline' }, 'LinkedIn'),
+            React.createElement('a', { href: 'https://twitter.com/almhdy24', className: 'text-white mx-2 hover:underline' }, 'Twitter')
           )
         )
       );
